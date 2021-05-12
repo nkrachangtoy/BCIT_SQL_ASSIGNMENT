@@ -49,7 +49,6 @@ DROP TABLE Customer
 GO
 
 --CREATE Tables
-
 CREATE TABLE Venue
 (
 	VenueId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
@@ -137,7 +136,7 @@ ALTER TABLE Sale
 ADD CONSTRAINT validPaymentType
 CHECK (PaymentType IN ('MC', 'AMEX', 'VISA', 'CASH'));
 
--- Insert seed data - venue values into the table
+-- Insertvenue values into the table
 INSERT [dbo].[Venue] VALUES (N'f48e1c38-a61c-46f3-a59c-0749047d013b', N'Spectrum Center', N'Charlotte', N'NC', 19077)
 GO
 INSERT [dbo].[Venue] VALUES (N'38a62a0a-aa0a-4330-8409-107fc486102d', N'American Airlines Arena', N'Miami', N'FL', 19600)
@@ -198,59 +197,6 @@ INSERT [dbo].[Venue] VALUES (N'4f7f3fb9-f706-4c18-8642-ef027468c670', N'Amway Ce
 GO
 INSERT [dbo].[Venue] VALUES (N'65d6f231-783a-452f-ac70-f4e483e0ad43', N'Barclays Center', N'Brooklyn', N'NY', 17732)
 GO
-
--- Display all Venues
--- SELECT * FROM Venue;
-
--- Display all Venues in reverse alphabetical order
--- SELECT * FROM Venue
--- ORDER BY Name DESC;
-
--- Display the Staples Center record
--- SELECT * FROM Venue
--- WHERE name='Staples Center'
-
--- Delete the Staples Center record (found by Id)
--- DELETE FROM Venue
--- WHERE VenueId = (
-	--SELECT VenueId
-	--FROM Venue
-	--WHERE Name = 'Staples Center'
---)
-
--- Display the total number of records
---SELECT COUNT(*) AS [Venue Count]
---FROM Venue
-
--- Insert a new record for the Staples Center
---INSERT INTO Venue VALUES (NEWID(), 'Staples Center', 'Los Angeles', 'California', 18997)
-
--- Display the total number of records
---SELECT COUNT(*) AS [Venue Count]
---FROM Venue
-
--- Display the Name and City of all Venues that are in California
---SELECT Name, City
---FROM Venue
---WHERE State = 'California'
-
--- Display the Name and Capacity of all Venues that have a capacity of 19200 or more
---SELECT Name, Capacity
---FROM Venue
---WHERE Capacity >= 19200
-
--- Display the Name, City, and State of all Venues that have teams in the Western Conference
-
-
--- Diplay the total Capacity of all Venues
---SELECT SUM(Capacity) AS [Total Capacity]
---FROM Venue
-
--- Display the result by querying the state and number of venues in each state
---SELECT State,
---COUNT (State) AS [Venues in State] 
---FROM Venue
---GROUP BY State
 
 --INSERT Seed Data
 DECLARE @VenueId UNIQUEIDENTIFIER = (SELECT VenueId FROM Venue WHERE Name = 'Staples Center');
@@ -769,6 +715,60 @@ WHERE SaleId IN (
 
 
 -- SELECT STATMENTS --
+
+---- Display all Venues
+-- SELECT * FROM Venue;
+
+---- Display all Venues in reverse alphabetical order
+-- SELECT * FROM Venue
+-- ORDER BY Name DESC;
+
+---- Display the Staples Center record
+-- SELECT * FROM Venue
+-- WHERE name='Staples Center'
+
+---- Delete the Staples Center record (found by Id)
+-- DELETE FROM Venue
+-- WHERE VenueId = (
+--	SELECT VenueId
+--	FROM Venue
+--	WHERE Name = 'Staples Center'
+--)
+
+---- Display the total number of records
+--SELECT COUNT(*) AS [Venue Count]
+--FROM Venue
+
+---- Insert a new record for the Staples Center
+--INSERT INTO Venue VALUES (NEWID(), 'Staples Center', 'Los Angeles', 'California', 18997)
+
+---- Display the total number of records
+--SELECT COUNT(*) AS [Venue Count]
+--FROM Venue
+
+---- Display the Name and City of all Venues that are in California
+--SELECT Name, City
+--FROM Venue
+--WHERE State = 'California'
+
+---- Display the Name and Capacity of all Venues that have a capacity of 19200 or more
+--SELECT Name, Capacity
+--FROM Venue
+--WHERE Capacity >= 19200
+
+---- Display the Name, City, and State of all Venues that have teams in the Western Conference
+
+
+---- Diplay the total Capacity of all Venues
+--SELECT SUM(Capacity) AS [Total Capacity]
+--FROM Venue
+
+---- Display the result by querying the state and number of venues in each state
+--SELECT State,
+--COUNT (State) AS [Venues in State] 
+--FROM Venue
+--GROUP BY State
+
 -- 9) Display the Venue Name, Event Name, Date, Start Time of all up coming events.
 SELECT StartDate FROM Event
 SELECT	v.Name [Venue],
